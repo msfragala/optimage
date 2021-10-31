@@ -1,0 +1,20 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import './_components.css';
+@import './_variables.css';
+
+*:focus,
+*:focus-visible {
+  outline-width: var(--focus-ring-width);
+  outline-color: var(--focus-ring-color);
+  outline-style: var(--focus-ring-style);
+  outline-offset: var(--focus-ring-offset);
+  z-index: 10;
+}
+
+@supports selector(*:focus-visible) {
+  *:focus:not(:focus-visible) {
+    outline: 0 !important;
+  }
+}

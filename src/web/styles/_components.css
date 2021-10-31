@@ -1,0 +1,87 @@
+@layer components {
+  .ms-input {
+    --focus-ring-offset: -1px;
+    appearance: none;
+    background: none;
+    border: 1px solid theme('colors.border');
+    border-radius: theme('borderRadius.sm');
+    min-height: 40px;
+    padding: 0 theme('padding.sm');
+    transition: border-color 200ms ease;
+
+    &:hover {
+      border-color: #ffffff66;
+    }
+  }
+
+  .ms-file-input-button {
+    @apply cursor-pointer hover:text-pink-300;
+
+    input[type='file']:focus + & {
+      outline-width: var(--focus-ring-width);
+      outline-color: var(--focus-ring-color);
+      outline-style: var(--focus-ring-style);
+      outline-offset: var(--focus-ring-offset);
+      z-index: 10;
+    }
+  }
+
+  .ms-input-label {
+    @apply block text-sm font-medium;
+  }
+
+  .ms-input-hint {
+    @apply text-xs text-text-soft font-light tracking-wider;
+  }
+
+  .ms-input-error {
+    @apply text-xs text-red-400 font-normal tracking-wider;
+  }
+
+  .ms-pill {
+    @apply bg-bg-soft text-sm w-fit px-8 py-4 rounded;
+
+    button&,
+    a[href]& {
+      @apply hover:text-pink-300;
+    }
+  }
+
+  .ms-button-primary {
+    @apply text-bg bg-pink-300 font-medium rounded;
+    min-height: 32px;
+    padding: 0.6em 1em;
+  }
+
+  .ms-button-icon {
+    display: flex;
+    min-width: 32px;
+    min-height: 32px;
+    border-radius: theme('borderRadius.sm');
+    aspect-ratio: 1/1;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 200ms ease;
+
+    &:hover {
+      color: theme('colors.pink.300');
+    }
+  }
+}
+
+.ms-button-primary,
+.ms-button-icon {
+  &:disabled,
+  &[data-disabled='true'] {
+    @apply cursor-not-allowed;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.ms-animate-loader {
+  animation: spin 2s linear infinite;
+}
