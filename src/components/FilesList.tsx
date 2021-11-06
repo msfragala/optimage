@@ -1,5 +1,4 @@
 import { bytesToString } from '@/lib/bytes';
-import { getImageDimensions } from '@/lib/get-image-dimensions';
 import { useStore } from '@/lib/use-store';
 import { TrashIcon } from '@/components/icons/TrashIcon';
 import { $inputs, Source } from '@/stores/$inputs';
@@ -40,10 +39,12 @@ function FileItem(props: {
   const size = bytesToString(props.source.file.size);
   const file = props.source.file;
   const ready = props.source.decodingStatus === 'success';
+  const imageData = props.source.decoded;
 
   useEffect(() => {
-    getImageDimensions(file).then(setDimensions);
-  }, [file]);
+    if (!imageData) return;
+    setDimensions(`${imageData.width}×${imageData.height}`);
+  }, [imageData]);
 
   return (
     <div class="hover:bg-bg-softer w-full flex gap-4 items-center px-12 py-2 rounded my-4">
