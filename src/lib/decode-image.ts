@@ -79,7 +79,6 @@ async function createImageFromFile(
     await loaded;
     return img;
   } finally {
-    console.log('revoking');
     URL.revokeObjectURL(url);
   }
 }

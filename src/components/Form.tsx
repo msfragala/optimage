@@ -16,7 +16,7 @@ export function Form() {
     event.preventDefault();
 
     let firstErrorId = '';
-    console.log(sources);
+
     if (sources.length === 0) {
       $errors.setError(FILES_FIELD_ID, 'Add images to resize');
       firstErrorId = FILES_FIELD_ID;

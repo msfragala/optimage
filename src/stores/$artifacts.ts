@@ -10,6 +10,7 @@ import { Source } from './$inputs';
 import { encodeImage } from '@/lib/encode-image';
 import { removeExtension } from '@/lib/remove-extension';
 import { AsyncStatus } from '@/types/async-status';
+import { resizeWorker } from '@/workers/resize';
 
 export interface Target {
   type: ImageType;
@@ -50,7 +51,9 @@ export const $artifacts = {
             status: 'pending',
           };
 
-          encodeImage(source.decoded!, target.type)
+          resizeWorker()
+            .then(w => w.resize(source.decoded!, target.width))
+            .then(resized => encodeImage(resized, target.type))
             .then(blob => {
               store.update(s => {
                 s[key].blob = blob;
