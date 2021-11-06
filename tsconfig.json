@@ -6,9 +6,9 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "jsx": "preserve",
-    "jsxImportSource": "solid-js",
-    "types": ["vite/client", "solid-js", "solid-js/store", "solid-js/web"],
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
+    "types": ["vite/client", "preact", "preact/hooks"],
     "paths": {
       "@/*": ["./src/*"]
     }

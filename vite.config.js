@@ -1,10 +1,12 @@
 import { defineConfig } from 'vite';
-import solidPlugin from 'vite-plugin-solid';
+import preact from '@preact/preset-vite';
 import { resolve } from 'path';
 
 export default defineConfig({
-  plugins: [solidPlugin()],
-  root: resolve('./src/web/'),
+  publicDir: resolve('./public'),
+  plugins: [preact()],
+  root: resolve('./src/'),
+  assetsInclude: ['**/*.{avif,png,jpg,jpeg,webp,wasm}'],
   resolve: {
     alias: {
       '@': resolve('./src'),
@@ -12,7 +14,8 @@ export default defineConfig({
   },
   build: {
     outDir: resolve('./dist'),
-    target: 'esnext',
+    target: 'modules',
     polyfillDynamicImport: false,
+    emptyOutDir: true,
   },
 });
