@@ -1,5 +1,5 @@
-import encoder from '@/codecs/avif/avif_enc';
-import decoder from '@/codecs/avif/avif_dec';
+import encoder from '@/lib/codecs/avif/avif_enc';
+import decoder from '@/lib/codecs/avif/avif_dec';
 import { exposeCodec } from '@/lib/expose-codec';
 
 exposeCodec({

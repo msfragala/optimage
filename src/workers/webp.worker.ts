@@ -1,5 +1,5 @@
-import encoder from '@/codecs/webp/webp_enc';
-import decoder from '@/codecs/webp/webp_dec';
+import encoder from '@/lib/codecs/webp/webp_enc';
+import decoder from '@/lib/codecs/webp/webp_dec';
 import { exposeCodec } from '@/lib/expose-codec';
 
 exposeCodec({

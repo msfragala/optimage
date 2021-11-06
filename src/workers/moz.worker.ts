@@ -1,5 +1,5 @@
-import encoder from '@/codecs/mozjpeg/mozjpeg_enc';
-import decoder from '@/codecs/mozjpeg/mozjpeg_dec';
+import encoder from '@/lib/codecs/mozjpeg/mozjpeg_enc';
+import decoder from '@/lib/codecs/mozjpeg/mozjpeg_dec';
 import { exposeCodec } from '@/lib/expose-codec';
 
 exposeCodec({

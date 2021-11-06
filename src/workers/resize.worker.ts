@@ -1,5 +1,5 @@
 import { expose } from 'comlink';
-import initResize, { InitOutput, resize } from '../codecs/resize/resize';
+import initResize, { InitOutput, resize } from '@/lib/codecs/resize/resize';
 
 type ResizeMethod = 'triangle' | 'catrom' | 'mitchell' | 'lanczos3';
 

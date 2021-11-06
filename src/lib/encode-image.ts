@@ -1,5 +1,7 @@
-import { codecs } from '@/codecs/codecs';
 import { ImageType } from '@/constants/mime-types';
+import { avifWorker } from '@/workers/avif';
+import { mozWorker } from '@/workers/moz';
+import { webpWorker } from '@/workers/webp';
 
 export async function encodeImage(
   source: ImageData,
@@ -9,14 +11,14 @@ export async function encodeImage(
 
   switch (mimeType) {
     case 'image/webp':
-      encoder = codecs.webp();
+      encoder = webpWorker();
       break;
     case 'image/avif':
-      encoder = codecs.avif();
+      encoder = avifWorker();
       break;
     case 'image/jpeg':
     case 'image/png':
-      encoder = codecs.moz();
+      encoder = mozWorker();
       break;
     default:
       throw new Error('Trying to encode an unsupported image type');

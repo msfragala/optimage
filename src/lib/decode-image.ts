@@ -1,30 +1,51 @@
-import { codecs } from '@/codecs/codecs';
+import { avifWorker } from '@/workers/avif';
+import { webpWorker } from '@/workers/webp';
 
 const supportsImageDecoder = 'ImageDecoder' in self;
 
 export async function decodeImage(blob: File | Blob): Promise<ImageData> {
-  let source: ImageBitmap | HTMLImageElement | VideoFrame;
+  let source: ImageBitmap | HTMLImageElement | VideoFrame | null = null;
   const native = await canDecodeNatively(blob.type);
 
   switch (blob.type) {
     case 'image/webp': {
-      const data = await codecs.webp().then(w => w.decode(blob));
+      const data = await webpWorker().then(w => w.decode(blob));
       if (!data) throw new Error('Unable to decode WebP image');
       return data;
     }
     case 'image/avif': {
-      const data = await codecs.avif().then(w => w.decode(blob));
+      const data = await avifWorker().then(w => w.decode(blob));
       if (!data) throw new Error('Unable to decode AVIF image');
       return data;
     }
   }
 
   if (native) {
-    source = await decodeToVideoFrame(blob);
-  } else if ('createImageBitmap' in self) {
-    source = await createImageBitmap(blob);
-  } else {
-    source = await createImageFromFile(blob);
+    try {
+      source = await decodeToVideoFrame(blob);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  if (!source && 'createImageBitmap' in self) {
+    try {
+      source = await createImageBitmap(blob);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  if (!source) {
+    try {
+      source = await createImageFromFile(blob);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  if (!source) {
+    throw new Error('Unable to decode image');
   }
 
   return drawImageData(source);
