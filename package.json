@@ -25,6 +25,7 @@
     "jszip": "^3.7.1",
     "nanoid": "^3.1.30",
     "preact": "^10.5.15",
+    "preact-router": "^3.2.1",
     "ssws": "^1.0.0"
   },
   "devDependencies": {

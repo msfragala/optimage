@@ -8,6 +8,9 @@ import { LoadingIcon } from './icons/LoadingIcon';
 import { CheckmarkIcon } from './icons/CheckmarkIcon';
 import { AsyncStatus } from '@/types/async-status';
 import $ from './Results.module.css';
+import { route } from 'preact-router';
+import { HOME_ROUTE } from '@/constants/routes';
+import { abortable } from '@/lib/abortable';
 
 export function Results() {
   const sources = useStore($inputs, s => Object.values(s.sources));
@@ -16,10 +19,22 @@ export function Results() {
   const [zipUrl, setZipUrl] = useState<string>('');
 
   useEffect(() => {
+    if (artifacts?.length > 0) return;
+    route(HOME_ROUTE, true);
+  }, [artifacts]);
+
+  useEffect(() => {
     if (pending) return;
-    zipWorker()
+
+    const controller = new AbortController();
+    abortable(controller.signal, zipWorker())
       .then(w => w.zip(artifacts))
-      .then(url => setZipUrl(url));
+      .then(url => setZipUrl(url))
+      .catch(() => {});
+
+    return () => {
+      controller.abort();
+    };
   }, [pending]);
 
   return (

@@ -32,6 +32,9 @@ const store = immutable<Record<string, Artifact>>({});
 
 export const $artifacts = {
   subscribe: store.subscribe,
+  reset() {
+    store.update(() => ({}));
+  },
   generate(sources: Source[], widths: number[]) {
     store.update(s => {
       sources.forEach(source => {

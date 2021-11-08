@@ -49,8 +49,8 @@ export function SizesField() {
         step="100"
       />
       <p class="ms-input-error mt-8">{error}</p>
-      {widths?.length && (
-        <ul class="flex gap-8 mt-8">
+      {widths?.length > 0 && (
+        <ul class="flex flex-wrap gap-8 mt-8">
           {sortSizes(widths).map(size => (
             <li class="ms-pill" key={size}>
               <span>{size}</span>

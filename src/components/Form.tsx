@@ -1,7 +1,10 @@
 import { FILES_FIELD_ID, WIDTHS_FIELD_ID } from '@/constants/field-names';
+import { DOWNLOADS_ROUTE } from '@/constants/routes';
 import { $artifacts } from '@/stores/$artifacts';
 import { $errors } from '@/stores/$errors';
 import { $inputs } from '@/stores/$inputs';
+import { route } from 'preact-router';
+import { useEffect } from 'preact/hooks';
 import { useStore } from '../lib/use-store';
 import { FilesList } from './FilesList';
 import { SizesField } from './SizesField';
@@ -33,7 +36,14 @@ export function Form() {
     }
 
     $artifacts.generate(sources, widths);
+    route(DOWNLOADS_ROUTE);
   }
+
+  useEffect(() => {
+    if (sources.length === 0) return;
+    $inputs.reset();
+    $artifacts.reset();
+  }, []);
 
   return (
     <form onSubmit={onSubmit} noValidate>

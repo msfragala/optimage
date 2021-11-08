@@ -61,4 +61,10 @@ export const $inputs = {
       delete s.sources[id];
     });
   },
+  reset() {
+    store.update(s => {
+      s.sources = {};
+      s.widths = [400, 800, 1200];
+    });
+  },
 };

@@ -48,8 +48,8 @@
   }
 
   .ms-button-primary {
-    @apply text-bg bg-pink-300 font-medium rounded;
-    min-height: 32px;
+    @apply text-bg bg-pink-300 font-medium rounded block w-fit;
+    min-height: 40px;
     padding: 0.6em 1em;
   }
 

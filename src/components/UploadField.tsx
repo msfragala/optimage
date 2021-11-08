@@ -33,7 +33,7 @@ export function UploadField() {
     <div>
       <DropZone
         global
-        class="border border-dotted flex pt-48 pb-64"
+        class="border border-dotted flex pt-48 pb-64 px-24"
         dragClass="bg-red-500"
         onDrop={onDrop}
         allowTypes={SupportedTypes}
@@ -50,23 +50,25 @@ export function UploadField() {
               width="128"
             />
           </picture>
-          Drop images here, or{' '}
-          <input
-            class="sr-only"
-            name="files-input"
-            id="files-input"
-            type="file"
-            multiple
-            accept={SUPPORTED_TYPES.join()}
-            onChange={onChange}
-            aria-describedby="files-input-error"
-          />
-          <label
-            class="ms-file-input-button underline rounded-sm"
-            for="files-input"
-          >
-            browse files
-          </label>
+          <p class="text-center">
+            Drop images here, or{' '}
+            <input
+              class="sr-only"
+              name="files-input"
+              id="files-input"
+              type="file"
+              multiple
+              accept={SUPPORTED_TYPES.join()}
+              onChange={onChange}
+              aria-describedby="files-input-error"
+            />
+            <label
+              class="ms-file-input-button underline rounded-sm"
+              for="files-input"
+            >
+              browse files
+            </label>
+          </p>
         </div>
       </DropZone>
       <p class="ms-input-error mt-8" id="files-input-error">
