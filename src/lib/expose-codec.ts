@@ -1,4 +1,4 @@
-import * as Comlink from 'comlink';
+import { expose } from 'slother';
 import { CodecWorker } from '../types/codec-worker';
 
 interface Encoder<Options> {
@@ -28,20 +28,28 @@ export function exposeCodec<
   encoderDefaults: O;
 }) {
   const worker: CodecWorker<O> = {
-    async encode(
-      source: ImageData,
-      options: Partial<O> = {}
-    ): Promise<Uint8Array | null> {
+    async encode({
+      source,
+      options = {},
+    }: {
+      source: ImageData;
+      options?: Partial<O>;
+    }): Promise<Uint8Array | null> {
       const encodeOptions = { ...encoderDefaults, ...options };
-      return encoder().then(m =>{
-        return m.encode(source.data, source.width, source.height, encodeOptions)
+      return encoder().then(m => {
+        return m.encode(
+          source.data,
+          source.width,
+          source.height,
+          encodeOptions
+        );
       });
     },
-    async decode(blob: File | Blob): Promise<ImageData | null> {
+    async decode({ blob }: { blob: File | Blob }): Promise<ImageData | null> {
       const buffer = await blob.arrayBuffer();
       return decoder().then(m => m.decode(buffer));
     },
   };
 
-  Comlink.expose(worker);
+  expose(worker);
 }

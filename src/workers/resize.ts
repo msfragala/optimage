@@ -1,9 +1,9 @@
-import { createLazyWorker } from '@/lib/lazy-worker';
+import { Pool } from 'slother';
 
-interface ResizeWorker {
-  resize(data: ImageData, width: number): Promise<ImageData>;
-}
+type ResizeWorker = {
+  resize(payload: { imageData: ImageData; width: number }): Promise<ImageData>;
+};
 
-export const resizeWorker = createLazyWorker<ResizeWorker>(
-  () => import('./resize.worker?worker')
+export const resizeWorker = Pool.proxy<ResizeWorker>(() =>
+  import('./resize.worker?worker').then(w => new w.default())
 );

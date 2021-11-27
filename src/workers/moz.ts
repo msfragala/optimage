@@ -1,7 +1,7 @@
 import { MozJpegEncoderOptions } from '@/lib/codecs/mozjpeg/mozjpeg_enc';
-import { createLazyWorker } from '@/lib/lazy-worker';
 import { CodecWorker } from '@/types/codec-worker';
+import { Pool } from 'slother';
 
-export const mozWorker = createLazyWorker<CodecWorker<MozJpegEncoderOptions>>(
-  () => import('./moz.worker?worker')
+export const mozWorker = Pool.proxy<CodecWorker<MozJpegEncoderOptions>>(() =>
+  import('./moz.worker?worker').then(w => new w.default())
 );

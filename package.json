@@ -21,12 +21,14 @@
   },
   "dependencies": {
     "clsx": "^1.1.1",
-    "comlink": "^4.3.1",
     "jszip": "^3.7.1",
+    "mitt": "^3.0.0",
     "nanoid": "^3.1.30",
     "preact": "^10.5.15",
     "preact-router": "^3.2.1",
-    "ssws": "^1.0.0"
+    "slother": "^0.2.1",
+    "ssws": "^1.0.0",
+    "threads": "^1.7.0"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.1.5",

@@ -33,8 +33,8 @@ export function UploadField() {
     <div>
       <DropZone
         global
-        class="border border-dotted flex pt-48 pb-64 px-24"
-        dragClass="bg-red-500"
+        class="border border-dotted flex pt-48 pb-64 px-24 transition-colors"
+        dragClass="bg-bg-soft"
         onDrop={onDrop}
         allowTypes={SupportedTypes}
       >

@@ -11,20 +11,20 @@ export async function encodeImage(
 
   switch (mimeType) {
     case 'image/webp':
-      encoder = webpWorker();
+      encoder = webpWorker;
       break;
     case 'image/avif':
-      encoder = avifWorker();
+      encoder = avifWorker;
       break;
     case 'image/jpeg':
     case 'image/png':
-      encoder = mozWorker();
+      encoder = mozWorker;
       break;
     default:
       throw new Error('Trying to encode an unsupported image type');
   }
 
-  const data = await encoder.then(w => w.encode(source));
+  const data = await encoder.encode({ source });
   if (!data) throw new Error('Image encoding came back null');
   return new Blob([data], { type: mimeType });
 }

@@ -27,8 +27,7 @@ export function Results() {
     if (pending) return;
 
     const controller = new AbortController();
-    abortable(controller.signal, zipWorker())
-      .then(w => w.zip(artifacts))
+    abortable(controller.signal, zipWorker.zip(artifacts))
       .then(url => setZipUrl(url))
       .catch(() => {});
 

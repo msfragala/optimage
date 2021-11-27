@@ -1,5 +1,5 @@
 import { Artifact } from '@/stores/$artifacts';
-import { expose } from 'comlink';
+import { expose } from 'slother';
 import JSZip from 'jszip';
 
 expose({

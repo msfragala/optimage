@@ -54,8 +54,8 @@ export const $artifacts = {
             status: 'pending',
           };
 
-          resizeWorker()
-            .then(w => w.resize(source.decoded!, target.width))
+          resizeWorker
+            .resize({ imageData: source.decoded!, width: target.width })
             .then(resized => encodeImage(resized, target.type))
             .then(blob => {
               store.update(s => {

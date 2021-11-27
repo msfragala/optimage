@@ -1,4 +1,4 @@
-import { expose } from 'comlink';
+import { expose } from 'slother';
 import initResize, { InitOutput, resize } from '@/lib/codecs/resize/resize';
 
 type ResizeMethod = 'triangle' | 'catrom' | 'mitchell' | 'lanczos3';
@@ -20,9 +20,13 @@ const defaultOptions = {
 let ready: Promise<InitOutput>;
 
 expose({
-  async resize(imageData: ImageData, width: number): Promise<ImageData> {
+  async resize(payload: {
+    imageData: ImageData;
+    width: number;
+  }): Promise<ImageData> {
     if (!ready) ready = initResize();
     await ready;
+    const { imageData, width } = payload;
     const height = (imageData.width / imageData.height) * width;
 
     const result = resize(

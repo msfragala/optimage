@@ -9,12 +9,12 @@ export async function decodeImage(blob: File | Blob): Promise<ImageData> {
 
   switch (blob.type) {
     case 'image/webp': {
-      const data = await webpWorker().then(w => w.decode(blob));
+      const data = await webpWorker.decode({ blob });
       if (!data) throw new Error('Unable to decode WebP image');
       return data;
     }
     case 'image/avif': {
-      const data = await avifWorker().then(w => w.decode(blob));
+      const data = await avifWorker.decode({ blob });
       if (!data) throw new Error('Unable to decode AVIF image');
       return data;
     }
