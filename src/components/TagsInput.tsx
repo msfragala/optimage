@@ -9,10 +9,11 @@ export function TagsInput(props: TagsInputProps) {
 
   function onKeyDown(event: KeyboardEvent) {
     if (!['Enter', ' '].includes(event.key)) return;
-    event.preventDefault();
 
     const node = event.target as HTMLInputElement;
     const tag = node.value.trim();
+
+    if (node.value) event.preventDefault();
 
     if (validateTag(tag)) {
       if (tag) onAddTag(tag);
@@ -20,7 +21,7 @@ export function TagsInput(props: TagsInputProps) {
     }
   }
 
-  function onChange(event: Event) {
+  function onBlur(event: Event) {
     const node = event.target as HTMLInputElement;
     const tag = node.value.trim();
 
@@ -33,7 +34,7 @@ export function TagsInput(props: TagsInputProps) {
   return (
     <input
       {...inputProps}
-      onChange={onChange}
+      onBlur={onBlur}
       onKeyDown={onKeyDown}
       type={inputProps.type ?? 'text'}
     />
