@@ -67,6 +67,22 @@
       color: theme('colors.pink.300');
     }
   }
+
+  .ms-footer-text {
+    color: theme('colors.text-soft');
+
+    &[href],
+    & [href] {
+      transition: color 200ms ease, text-decoration-thickness 200ms ease;
+      text-decoration: underline;
+      text-decoration-color: transparent;
+
+      &:hover {
+        color: theme('colors.white');
+        text-decoration-color: currentColor;
+      }
+    }
+  }
 }
 
 .ms-button-primary,

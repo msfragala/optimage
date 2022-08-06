@@ -31,8 +31,10 @@ export function App() {
         </Route>
       </Router>
       <footer class="mt-auto pt-64 text-sm flex justify-between">
-        <p class="text-text-soft">&copy; Mitchell Fragala</p>
-        <p class="text-text-soft">v{version}</p>
+        <p class="ms-footer-text">&copy; Mitchell Fragala</p>
+        <p class="ms-footer-text">
+          <a href="https://github.com/msfragala/optimage">v{version}</a>
+        </p>
       </footer>
     </div>
   );
