@@ -1,81 +1,22 @@
 :root {
+  --text-xs: 0.8rem;
+  --text-sm: 0.9rem;
+  --text-md: 1rem;
+  --color-accent: #f9a9d4;
+  --color-border: #333333;
+  --color-bg: #101010;
+  --color-bg-soft: #242424;
+  --color-bg-softer: #181818;
+  --color-text: #ffffff;
+  --color-text-soft: #9e9e9e;
+  --color-text-softer: #808080;
   --focus-ring-width: 2px;
-  --focus-ring-color: theme('colors.pink.300');
+  --focus-ring-color: #f9a9d4;
   --focus-ring-style: dotted;
-  --focus-ring-offset: 0.25em;
-  /* Spacing */
-  --anyas-spacing-xs: 4px;
-  --anyas-spacing-sm: 8px;
-  --anyas-spacing-md: 16px;
-  --anyas-spacing-lg: 24px;
-  --anyas-spacing-xl: 48px;
-  --anyas-spacing-2xl: 64px;
-  --anyas-spacing-3xl: 60px;
-  --anyas-spacing-4xl: 72px;
-  /* Font families */
-  --anyas-fonts-sans: ui-sans-serif, system-ui, -apple-system,
-    BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
-    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
-    'Noto Color Emoji';
-  --anyas-fonts-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+  --focus-ring-offset: 0;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     'Liberation Mono', 'Courier New', monospace;
-  --anyas-fonts-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times,
-    serif;
-  /* Colors */
-  --anyas-colors-border: #333333;
-  --anyas-colors-bg: #101010;
-  --anyas-colors-bg-soft: #242424;
-  --anyas-colors-bg-softer: #181818;
-  --anyas-colors-text: #ffffff;
-  --anyas-colors-text-soft: #9e9e9e;
-  --anyas-colors-text-softer: #808080;
-  /* Border radii */
-  --anyas-radii-sm: 4px;
-  --anyas-radii-md: 6px;
-  --anyas-radii-lg: 8px;
-  /* Line heights */
-  --anyas-line-height-tight: 1.25;
-  --anyas-line-height-snug: 1.375;
-  --anyas-line-height-normal: 1.5;
-  --anyas-line-height-relaxed: 1.625;
-  --anyas-line-height-loose: 1.75;
-  /* Letter-spacing */
-  --anyas-letter-spacing-tighter: -0.03em;
-  --anyas-letter-spacing-tight: -0.015em;
-  --anyas-letter-spacing-normal: 0em;
-  --anyas-letter-spacing-wide: 0.015em;
-  --anyas-letter-spacing-wider: 0.03em;
-  --anyas-letter-spacing-widest: 0.45em;
-  /* Typography sizes */
-  --anyas-text-xs: 13px;
-  --anyas-text-xs-line-height: 1;
-  --anyas-text-xs-letter-spacing: var(--anyas-letter-spacing-wide);
-  --anyas-text-sm: 14px;
-  --anyas-text-sm-line-height: var(--anyas-line-height-normal);
-  --anyas-text-sm-letter-spacing: var(--anyas-letter-spacing-wide);
-  --anyas-text-md: 16px;
-  --anyas-text-md-line-height: var(--anyas-line-height-normal);
-  --anyas-text-md-letter-spacing: var(--anyas-letter-spacing-normal);
-  --anyas-text-lg: 18px;
-  --anyas-text-lg-line-height: var(--anyas-line-height-normal);
-  --anyas-text-lg-letter-spacing: var(--anyas-letter-spacing-wide);
-  --anyas-text-xl: 24px;
-  --anyas-text-xl-line-height: var(--anyas-line-height-normal);
-  --anyas-text-xl-letter-spacing: var(--anyas-letter-spacing-wide);
-  /* Typography sizes */
-  --anyas-text-heading-xs: 16px;
-  --anyas-text-heading-xs-line-height: 1;
-  --anyas-text-heading-xs-letter-spacing: var(--anyas-letter-spacing-wide);
-  --anyas-text-heading-sm: 24px;
-  --anyas-text-heading-sm-line-height: var(--anyas-line-height-normal);
-  --anyas-text-heading-sm-letter-spacing: var(--anyas-letter-spacing-wide);
-  --anyas-text-heading-md: 36px;
-  --anyas-text-heading-md-line-height: var(--anyas-line-height-normal);
-  --anyas-text-heading-md-letter-spacing: var(--anyas-letter-spacing-normal);
-  --anyas-text-heading-lg: 48px;
-  --anyas-text-heading-lg-line-height: var(--anyas-line-height-normal);
-  --anyas-text-heading-lg-letter-spacing: var(--anyas-letter-spacing-wide);
-  --anyas-text-heading-xl: 60px;
-  --anyas-text-heading-xl-line-height: var(--anyas-line-height-normal);
-  --anyas-text-heading-xl-letter-spacing: var(--anyas-letter-spacing-wide);
 }

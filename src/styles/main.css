@@ -1,8 +1,20 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-@import './_components.css';
 @import './_variables.css';
+@import './_reset.css';
+
+html {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  height: 100%;
+  width: 100%;
+}
+
+body,
+#root {
+  height: 100%;
+  width: 100%;
+}
 
 *:focus,
 *:focus-visible {
@@ -13,13 +25,66 @@
   z-index: 10;
 }
 
+a[href] {
+  border-radius: 0.25em;
+  --focus-ring-offset: 0.25em;
+}
+
 @supports selector(*:focus-visible) {
   *:focus:not(:focus-visible) {
     outline: 0 !important;
   }
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
 svg {
-  display: inline-block;
   height: 1em;
+  vertical-align: middle;
+}
+
+a[href] {
+  text-decoration: underline;
+  text-underline-offset: 0.125em;
+}
+
+.ms-button-primary {
+  background-color: var(--color-accent);
+  border-radius: 4px;
+  color: var(--color-bg);
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 500;
+  min-height: 40px;
+  padding: 0.6em 1em;
+  transition: opacity 200ms ease;
+  width: fit-content;
+}
+
+.ms-button-primary[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ms-button-secondary {
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 500;
+  min-height: 40px;
+  padding: 0.6em 1em;
+  width: fit-content;
+  min-width: 100px;
 }
