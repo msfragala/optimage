@@ -1,5 +1,5 @@
 import { Squoll } from 'squoll';
-import workerURL from 'squoll/worker?url';
+
 import avif_dec from 'squoll/codecs/avif_dec.wasm?url';
 import avif_enc from 'squoll/codecs/avif_enc.wasm?url';
 import mozjpeg_dec from 'squoll/codecs/mozjpeg_dec.wasm?url';
@@ -9,9 +9,10 @@ import oxipng_bg from 'squoll/codecs/oxipng_bg.wasm?url';
 import png_bg from 'squoll/codecs/png_bg.wasm?url';
 import webp_dec from 'squoll/codecs/webp_dec.wasm?url';
 import webp_enc from 'squoll/codecs/webp_enc.wasm?url';
+import SquollWorker from 'squoll/worker?worker';
 
 export const squoll = new Squoll({
-  worker: async () => new Worker(workerURL, { type: 'module' }),
+  worker: async () => new SquollWorker(),
   wasmBinaries: {
     avif_dec,
     avif_enc,
